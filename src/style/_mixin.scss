@@ -1,0 +1,11 @@
+@mixin lee {
+    margin: 100px;
+}
+
+$defaultSize: 1200px;
+
+@mixin inner {
+    width: $defaultSize;
+    margin: 0 auto;
+    background: orange;
+}
