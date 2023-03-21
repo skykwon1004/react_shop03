@@ -1,11 +1,16 @@
-@mixin lee {
-    margin: 100px;
-}
-
-$defaultSize: 1200px;
+$defaultSize: 1410px;
+$border : 1px solid #f7f7f7;
 
 @mixin inner {
-    width: $defaultSize;
+    max-width: $defaultSize;
     margin: 0 auto;
-    background: orange;
+}
+
+@mixin Itm {
+    border: $border;
+    padding: 10px;
+}
+
+@mixin List($display) {
+    display: $display;
 }
