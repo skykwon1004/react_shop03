@@ -5,11 +5,14 @@ const Nav = ({ categoryItm }) => {
     //주소에 있는 뒤에 텍스트를 뿌려주는 방법 pathname
     //React 페이지 이동 시 스크롤 맨 위로 오게 하는 방법 -> 검색하면 사용방법 알수있다
     return (
-        <nav className="Nav gnb">
+        <nav className="gnb inner">
             <ul>
                 {/* <li>path : { pathname }</li> */}
-                <li><Link to="/">home</Link></li>
-                <li><Link to="/all">all list</Link></li>
+                <li>
+                    <Link to="/all">
+                        <i className="xi-bars"></i>
+                    </Link>
+                </li>
                 {
                     categoryItm.map((it, idx) => {
                         return (

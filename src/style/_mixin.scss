@@ -1,16 +1,18 @@
-$defaultSize: 1410px;
-$border : 1px solid #f7f7f7;
+//함수
 
-@mixin inner {
-    max-width: $defaultSize;
-    margin: 0 auto;
+@mixin button($bg, $bd, $ol) {
+    background: $bg;
+    border: $bd;
+    outline: $ol;
 }
 
-@mixin Itm {
-    border: $border;
-    padding: 10px;
+@mixin position($position, $top, $right, $bottom, $left, $zindex: auto) {
+    position: $position;
+    inset: $top $right $bottom $left;
+    z-index: $zindex;
 }
+// zindex를 쓰기 싫으면 초기값을 ($zindex: auto) 입력해놓으면 안써도된다
 
-@mixin List($display) {
-    display: $display;
+@mixin background($img, $h, $v) {
+    background: url($img) no-repeat $h $v/cover;
 }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
+import Main from './pages/Main';
 import Cart from './shop/Cart';
 import CateList from './shop/CateList';
 import Itm from './shop/Itm';
@@ -44,7 +45,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout categoryItm={categoryItm} cart={cart} />}>
-        <Route index element={<List />} />
+        <Route index element={<Main />} />
         <Route path='all' element={<ListAll shopData={shopData} />} />
         <Route path=':cate' element={<CateList shopData={shopData} />} />
         <Route path='detail/:itm' element={<Itm shopData={shopData} cart={cart} setCart={setCart} />} />

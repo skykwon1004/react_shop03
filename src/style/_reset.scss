@@ -30,3 +30,9 @@ body {
 p {
     word-break: keep-all;
 }
+
+// slick slide 반짝임 없애기
+.slick-track,
+.slick-slide {
+    transition-delay: 300ms;
+}
