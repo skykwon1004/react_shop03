@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import Main from './pages/Main';
+import MainSlideList from './pages/MainSlideList';
 import Cart from './shop/Cart';
 import CateList from './shop/CateList';
 import Itm from './shop/Itm';
@@ -31,6 +32,20 @@ const App = () => {
   }, []);
 
 
+
+  // 환율
+  const [sw, setW] = useState([]);
+  const getKr = async () => {
+    const w = await axios.get('https://api.manana.kr/exchange/rate.json')
+    setW(w.data[1].rate);
+  }
+
+  useEffect(() => {
+    getKr()
+  }, []);
+
+
+
   const originalItm = shopData.map(it => it.category);
   // - 카테고리 데이터 originalItm에 담기
 
@@ -45,9 +60,14 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Layout categoryItm={categoryItm} cart={cart} />}>
-        <Route index element={<Main />} />
-        <Route path='all' element={<ListAll shopData={shopData} />} />
-        <Route path=':cate' element={<CateList shopData={shopData} />} />
+        <Route path='/' element={<Main shopData={shopData} sw={sw} />}>
+          <Route index element={<MainSlideList cate={'liquid'} shopData={shopData} sw={sw} />}></Route>
+          <Route path="tab/liquid" element={<MainSlideList cate={'liquid'} shopData={shopData} sw={sw} />}></Route>
+          <Route path="tab/pencil" element={<MainSlideList cate={'pencil'} shopData={shopData} sw={sw} />}></Route>
+          <Route path="tab/lipstick" element={<MainSlideList cate={'lipstick'} shopData={shopData} sw={sw} />}></Route>
+        </Route>
+        <Route path='all' element={<ListAll shopData={shopData} sw={sw} />} />
+        <Route path=':cate' element={<CateList shopData={shopData} sw={sw} />} />
         <Route path='detail/:itm' element={<Itm shopData={shopData} cart={cart} setCart={setCart} />} />
         <Route path='search' element={<SearchResult shopData={shopData} />} />
         <Route path='cart' element={<Cart shopData={shopData} cart={cart} setCart={setCart} />} />

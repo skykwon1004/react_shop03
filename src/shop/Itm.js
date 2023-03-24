@@ -45,6 +45,19 @@ const Itm = ({ shopData, cart, setCart }) => {
                     <strong>
                         {Itm.name}
                     </strong>
+                    <ul className="color">
+                        {
+                            Itm.product_colors?.map((it, idx) => <li key={idx} style={{
+                                background: it.hex_value,
+                                display: "inline-block",
+                                width: 10,
+                                height: 10,
+                                borderRadius: '50%',
+                                margin: "0 2px"
+                            }
+                            }></li>)
+                        }
+                    </ul>
                     <p>
                         {Itm.description?.substr(0, 100)} {Itm.description?.length > 100 ? '...' : ''}
                     </p>

@@ -1,27 +1,34 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
 import MainList from "./MainList";
+import MainSlideList from "./MainSlideList";
 import MainVisual from "./MainVisual";
 
 
 const Main = ({ shopData, sw }) => {
-    const TabData = [ 'liquid','pencil','lipstick']
+    const [num, setNum] = useState(0);
+    const TabData = [
+        { title: 'liquid', con: < MainSlideList cate={'liquid'} shopData={shopData} sw={sw} /> },
+        { title: 'pencil', con: <MainSlideList cate={'pencil'} shopData={shopData} sw={sw} /> },
+        { title: 'lipstick', con: <MainSlideList cate={'lipstick'} shopData={shopData} sw={sw} /> }
+    ]
 
     return (
         <main>
             <MainVisual />
             <div className="mainTab">
-                <h2>Lorem, ipsum dolor.</h2>
                 <ul className="menu">
                     {
                         TabData.map((it, idx) => {
-                            return <Link to={`/tab/${it}`}>{it}</Link>
+                            return (
+                                <li key={idx} onClick={() => setNum(idx)}>{it.title}</li>
+                            )
                         })
                     }
                 </ul>
-                {/* 라우터로 탭만들기 */}
                 <div className="con">
-                    <Outlet />
+                    {
+                        TabData[num].con
+                    }
                 </div>
             </div>
             <MainList cate={'pencil'} shopData={shopData} sw={sw} />

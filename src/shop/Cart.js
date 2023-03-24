@@ -11,7 +11,7 @@ const Cart = ({ shopData, cart, setCart }) => {
     useEffect(() => {
         getKr()
     }, []);
-
+//환율 바꾸는 state
 
     // const allPrice = Number(cart[0].price) + Number(cart[1].price);
     const allPrice = cart.reduce((current, next) => current + Number(next.price * next.num), 0);

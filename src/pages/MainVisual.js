@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Slide from 'react-slick';
 import "slick-carousel/slick/slick.css";
+
 import { Main } from '../data/lnfo';
 
 const MainVisual = () => {
